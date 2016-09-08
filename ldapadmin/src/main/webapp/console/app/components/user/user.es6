@@ -34,23 +34,6 @@ class UserController {
     switch (this.tab) {
       case 'infos':
         this.contexts = $injector.get('Contexts').query()
-        let sel_users = []
-        User.query((users) => {
-          users.map((u) => {
-            let id = u.uid
-            sel_users.push({
-              id   : id,
-              text : (u.sn || '') + ' ' + (u.givenName || '')
-            })
-          })
-          $('.manager').select2({
-            allowClear: true,
-            data  : sel_users
-          })
-          this.$injector.get('$timeout')(() => {
-            $('.manager').trigger('change')
-          })
-        })
         break;
       case 'groups':
         let notAdmin = [];
@@ -278,3 +261,24 @@ UserController.prototype.activate.$inject = [ '$scope' ]
 angular.module('admin_console')
 .controller('UserController', UserController)
 .filter('encodeURIComponent', () => window.encodeURIComponent )
+.directive('managers', [ '$timeout', 'User', ($timeout, User) => ({
+  link: (scope, elm, attrs, ctrl) => {
+    let sel_users = []
+    User.query((users) => {
+      users.map((u) => {
+        let id = u.uid
+        sel_users.push({
+          id   : id,
+          text : (u.sn || '') + ' ' + (u.givenName || '')
+        })
+      })
+      elm.select2({
+        allowClear: true,
+        data  : sel_users
+      })
+      $timeout(() => {
+        elm.trigger('change')
+      })
+    })
+  }
+})])
