@@ -273,10 +273,12 @@ angular.module('admin_console')
         })
       })
       elm.select2({
+        placeholder: '',
         allowClear: true,
         data  : sel_users
       })
       $timeout(() => {
+        elm.val('')
         elm.trigger('change')
       })
     })
