@@ -5,9 +5,9 @@ require('services/contexts')
 
 class UserController {
 
-  static $inject = [ '$routeParams', '$injector', 'User', 'Group', 'Orgs' ]
+  static $inject = [ '$routeParams', '$injector', 'User', 'Group' ]
 
-  constructor($routeParams, $injector, User, Group, Orgs) {
+  constructor($routeParams, $injector, User, Group) {
 
     const TMP_GROUP  = 'TEMPORARY'
 
@@ -48,20 +48,6 @@ class UserController {
           })
           this.$injector.get('$timeout')(() => {
             $('.manager').trigger('change')
-          })
-        })
-        let sel_orgs = []
-        Orgs.query((orgs) => {
-          orgs.map((o) => {
-            sel_orgs.push({
-              id   : o.id,
-              text : o.name
-            })
-          })
-          $('#organization').select2({
-            placeholder: "Select an organization",
-            allowClear: true,
-            data  : sel_orgs
           })
         })
         break;
