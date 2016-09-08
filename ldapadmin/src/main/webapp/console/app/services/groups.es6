@@ -18,9 +18,9 @@ angular.module('admin_console')
     'MOD_ANALYTICS',
     'MOD_EXTRACTORAPP',
     'MOD_LDAPADMIN',
-    'GN_ADMIN',
-    'GN_EDITOR',
-    'GN_REVIEWER',
+    'SV_ADMIN',
+    'SV_EDITOR',
+    'SV_REVIEWER',
     'USER',
     'TEMPORARY'
   ]

@@ -78,7 +78,7 @@ class GroupsController {
     );
 
     return result && this.adminList.concat(
-      [ {cn: 'MOD'}, {cn: 'GN'} ] // Avoid empty parents
+      [ {cn: 'MOD'}, {cn: 'SV'} ] // Avoid empty parents
     ).every(g => g.cn != group.cn)
   }
 
