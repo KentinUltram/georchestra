@@ -209,9 +209,11 @@ public class OrgsDao {
 
         // Add members
         BasicAttribute members = new BasicAttribute("member");
-        for(String member : org.getMembers())
-            members.add(buildUserDN(member).toString());
-        attrs.put(members);
+        if(org.getMembers() != null) {
+            for (String member : org.getMembers())
+                members.add(buildUserDN(member).toString());
+            attrs.put(members);
+        }
 
         // Optional ones
         if(org.getShortName() != null)
