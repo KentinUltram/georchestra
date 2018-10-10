@@ -42,7 +42,7 @@ psql -d georchestra -c "INSERT INTO geofence.gf_gsinstance (id, baseURL, dateCre
 
 If the **security proxy** is deployed and ```shared.ogc.statistics.activated``` is true in your setup (false by default):
 ```
-psql -d georchestra -f postgresql/05-ogc-server-statistics.sql
+psql -d georchestra -f postgresql/06-ogc-server-statistics.sql
 ```
 
 ### Extractorapp schema
